@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:web_admin_panel/routes/app_routes.dart';
+import 'package:web_admin_panel/routes/routes.dart';
 
 import 'utils/constants/text_strings.dart';
 import 'utils/device/web_material_scroll.dart';
@@ -17,15 +19,12 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
-      routes: {
-        "/": (context) => FirstScreen(),
-        "/second-screen": (context) => SecondScreen(),
-      },
-      getPages: [
-        GetPage(name: "/", page: () => FirstScreen()),
-        GetPage(name: "/second-screen/", page: () => SecondScreen()),
-        GetPage(name: "/second-screen/:userID", page: () => SecondScreen()),
-      ],
+      getPages: TAppRoute.pages,
+      initialRoute: TRoutes.firstScreen,
+      unknownRoute: GetPage(
+        name: '/page-not-found',
+        page: () => Scaffold(body: Center(child: Text('Page Not Found'))),
+      ),
     );
   }
 }

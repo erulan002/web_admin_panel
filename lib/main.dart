@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'app.dart';
 
@@ -10,6 +11,7 @@ Future<void> main() async {
   // Initialize GetX Local Storage
 
   // Remove # sign from url
+  setPathUrlStrategy();
 
   // Initialize Firebase & Authentication Repository
 
